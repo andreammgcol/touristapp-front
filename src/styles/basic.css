@@ -30,21 +30,18 @@ section {
   list-style-type: none;
 	padding: 0;
 	margin: 0;
-	height: 100px;
+	height: 80px;
 	background-color: #007BA4;
-	display: flex;
-	flex-flow: row wrap;
+  display: flex;
+  flex-direction: row;
 	align-items: center;
 }
 
 .logo > img {
-  display: flex;
-  width: 50%;
-  justify-content: center;
-  flex-direction: row;
-  /*align-items: center;
-  box-sizing: unset; */
-  left: 50%;
+  display: block;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* sign in button styles */
