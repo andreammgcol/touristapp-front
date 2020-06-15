@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PlannerStep1 from './PlannerStep1';
 import PlannerStep2 from './PlannerStep2';
 import PlannerStep3 from './PlannerStep3';
+import dbFake from '../database/db.json';
+import { myDate, sortFunction } from '../utils';
 
 export class PlannerContainer extends Component {
 
@@ -9,90 +11,127 @@ export class PlannerContainer extends Component {
         super();
         this.state = {
             currentStep: 1,
-            events: [],
-            // plans: ['plan1','plan2'],
-            plans: [],
-            planTypes: [
-                { id: 'plan1', label: 'Arte', icon: 'pi-chart-bar' },
-                { id: 'plan2', label: 'Musica', icon: 'pi-dollar' },
-                { id: 'plan3', label: 'Comida', icon: 'pi-user' },
-                { id: 'plan4', label: 'Deportes', icon: 'pi-users' },
-                { id: 'plan5', label: 'Teatro', icon: 'pi-briefcase' },
-                { id: 'plan6', label: 'Cine', icon: 'pi-briefcase' },
-                { id: 'plan7', label: 'Rumba', icon: 'pi-dollar' },
-                { id: 'plan8', label: 'Sitios turisticos', icon: 'pi-chart-bar' }
-            ],
-            eventsByPlan: [
-                {
-                    id: 'plan1', events: [
-                        { id: 'event1', label: 'Exhibicion Leonardo Davinci', text: 'La vida de Davinci en sus mejores obras al oleo.', picture: 'assets/layout/images/img1.png', place: 'Museo arte moderno', icon: 'pi-chart-bar', cost: '$52,800' },
-                        { id: 'event2', label: 'Monet: The Late Years', text: 'Los ultimos dias en la vida de Claude Monet.', picture: 'assets/layout/images/img1.png', place: 'Museo arte moderno', icon: 'pi-chart-bar', cost: '$28,500' },
-                        { id: 'event3', label: 'Expocultura 2019', text: 'El arte de Medellin se presenta ante el mundo en: EXPOCULTURA 2019.', picture: 'assets/layout/images/img1.png', place: 'Jardin Botanico Joaquín Antonio Uribe, MAM', icon: 'pi-chart-bar', cost: '$37,000' },
-                    ]
-                },
-                {
-                    id: 'plan2', events: [
-                        { id: 'event4', label: 'Jazz en vivo', text: 'La vida de Davinci en sus mejores obras al oleo.', picture: 'assets/demo/images/nature/music-jazz-1.jpg', place: 'Museo arte moderno', icon: 'pi-chart-bar', cost: '$36,100' },
-                        { id: 'event5', label: 'Tributo a Soda Stereo', text: 'Los ultimos dias en la vida de Claude Monet.', picture: 'assets/demo/images/nature/music-soda-1.jpg', place: 'Museo arte moderno', icon: 'pi-chart-bar', cost: '$48,900' },
-                        { id: 'event7', label: 'Batallas de Rap', text: 'El arte de Medellin se presenta ante el mundo en: EXPOCULTURA 2019.', picture: 'assets/demo/images/nature/rap-1.jfif', place: 'Jardin Botanico Joaquín Antonio Uribe, MAM', icon: 'pi-chart-bar', cost: '$8,000' },
-                        { id: 'event8', label: 'Bolera Suramericana', text: 'El arte de Medellin se presenta ante el mundo en: EXPOCULTURA 2019.', picture: 'assets/demo/images/nature/bolera-3.jpg', place: 'Jardin Botanico Joaquín Antonio Uribe, MAM', icon: 'pi-users', cost: '$27,000' },
-                        { id: 'event9', label: 'Bubble Foot Medellin', text: 'El arte de Medellin se presenta ante el mundo en: EXPOCULTURA 2019.', picture: 'assets/demo/images/nature/bubble-foot-1.png', place: 'Jardin Botanico Joaquín Antonio Uribe, MAM', icon: 'pi-users', cost: '$11,000' },
-                        { id: 'event10', label: 'Show de cocina en vivo!', text: 'El arte de Medellin se presenta ante el mundo en: EXPOCULTURA 2019.', picture: 'assets/demo/images/nature/cocina-1.jpg', place: 'Jardin Botanico Joaquín Antonio Uribe, MAM', icon: 'pi-dollar', cost: '$75,800' },
-                        { id: 'event11', label: 'Colombia coffee Tour', text: 'El arte de Medellin se presenta ante el mundo en: EXPOCULTURA 2019.', picture: 'assets/demo/images/nature/coffee-2.jpg', place: 'Jardin Botanico Joaquín Antonio Uribe, MAM', icon: 'pi-dollar', cost: '$38,900' },
-                    ]
-                },
-                {
-                    id: 'plan3', events: [
-                        { id: 'event7', label: 'Bolera Suramericana', text: 'La vida de Davinci en sus mejores obras al oleo.', picture: 'assets/layout/images/img1.png', place: 'Museo arte moderno', icon: 'pi-chart-bar', cost: '$21,000' },
-                        { id: 'event8', label: 'Tenis de mesa', text: 'Los ultimos dias en la vida de Claude Monet.', picture: 'assets/layout/images/img1.png', place: 'Museo arte moderno', icon: 'pi-chart-bar', cost: '$15,000' },
-                        { id: 'event9', label: 'Bubble Foot Medellin', text: 'El arte de Medellin se presenta ante el mundo en: EXPOCULTURA 2019.', picture: 'assets/layout/images/img1.png', place: 'Jardin Botanico Joaquín Antonio Uribe, MAM', icon: 'pi-chart-bar', cost: '$8,000' },
-                    ]
-                },
-                {
-                    id: 'plan4', events: [
-                        { id: 'event7', label: 'Show de cocina en vivo', text: 'La vida de Davinci en sus mejores obras al oleo.', picture: 'assets/layout/images/img1.png', place: 'Museo arte moderno', icon: 'pi-chart-bar', cost: '$18,000' },
-                        { id: 'event8', label: 'Burguer Master Medellin', text: 'Los ultimos dias en la vida de Claude Monet.', picture: 'assets/layout/images/img1.png', place: 'Museo arte moderno', icon: 'pi-chart-bar', cost: '$10,000' },
-                        { id: 'event9', label: 'Colombia coffee Tour', text: 'El arte de Medellin se presenta ante el mundo en: EXPOCULTURA 2019.', picture: 'assets/layout/images/img1.png', place: 'Jardin Botanico Joaquín Antonio Uribe, MAM', icon: 'pi-chart-bar', cost: '$9,000' },
-                    ]
-                },
-
-            ]
+            isLoadedCategory: false,
+            isLoadedActivity: false,
+            isFirstLoadStep2: true,
+            selectedCategories: [], // categorias seleccionadas
+            selectedActivities: [], // actividades seleccionadas
+            savedPlans: [], // planes guardados por usuario
         };
 
-        //this.onTaskChange = this.onTaskChange.bind(this);
+        // this.onTaskChange = this.onTaskChange.bind(this);
+    }
+
+    componentDidUpdate() {
+        console.log('PlannerContainer - componentDidUpdate', myDate());
+        const { currentStep, isLoadedActivity } = this.state;
+        console.log('currentStep', currentStep);
+
+        /* 
+        if (currentStep === 2 && !isLoadedActivity) {
+            // activities fetch
+            console.log('fetching activities');
+
+            fetch("https://lab-tourist-api.herokuapp.com/api/v1/activities")
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        console.log('api/v1/activities');
+                        console.log(result);
+
+                        this.setState({
+                            isLoadedActivity: true,
+                            activityItemsResponse: result.response
+                        });
+
+                    },
+                    (error) => {
+                        this.setState({
+                            isLoaded: true,
+                            error
+                        });
+                    }
+                )
+        }
+        */
+
     }
 
     componentDidMount() {
-        console.log('componentDidMount PlannerContainer');
-        // hacer un fetch a una lib generica y leer de un .json con los datos en el archivo local, luego connectar con un endpoint real.
+        console.log('PlannerContainer - componentDidMount', myDate());
+        // console.log('dbFake');
+        // console.log(dbFake);
+
+        // Pend: hacer un fetch a una lib generica y leer de un .json con los datos en el archivo local. 
+        // luego connectar con un endpoint real.
         /*
         fetch("/my-comments.json")
           .then(res => res.json())
           .then(comments => this.setState({ comments }))
-
           */
+
+
+
+        // NOTE:
+        // Revisar el enfoque de tener o class components (componentDidMount) para los plannerSteps
+        // o explorar el uso de Hooks (useEffect) parar los fetchs del api.
+        /* 
+        const { currentStep, isLoadedCategory } = this.state;
+        console.log('currentStep', currentStep);
+        if (currentStep === 1 && !isLoadedCategory) {
+            // categories fetch
+            console.log('fetching categories');
+            fetch("https://lab-tourist-api.herokuapp.com/api/v1/categories")
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        console.log('api/v1/categories');
+                        console.log(result);
+
+                        this.setState({
+                            isLoadedCategory: true,
+                            categoryItemsResponse: result.response
+                        });
+                    },
+                    (error) => {
+                        this.setState({
+                            isLoaded: true,
+                            error
+                        });
+                    }
+                )
+        }
+        */
+
+
     }
 
     onPlanChange = (e) => {
         console.log('onPlanChange-Planner.');
-        let selectedTasks = [...this.state.plans];
-        if (e.checked)
-            selectedTasks.push(e.value);
+        // Categorias seleccionadas
+        let selectedItems = [...this.state.selectedCategories];
+        console.log(e.target.value);
+        console.log(e.target.checked);
+        if (e.target.checked)
+            selectedItems.push(e.target.value);
         else
-            selectedTasks.splice(selectedTasks.indexOf(e.value), 1);
+            selectedItems.splice(selectedItems.indexOf(e.target.value), 1);
 
-        this.setState({ plans: selectedTasks });
+        console.log(selectedItems);
+        this.setState({ selectedCategories: selectedItems });
     }
 
     onEventChange = (e) => {
         console.log('onEventChange-Planner.');
-        let selectedEvents = [...this.state.events];
-        if (e.checked)
-            selectedEvents.push(e.value);
+        // Actividades seleccionadas
+        let selectedItems = [...this.state.selectedActivities];
+        if (e.target.checked)
+            selectedItems.push(e.target.value);
         else
-            selectedEvents.splice(selectedEvents.indexOf(e.value), 1);
+            selectedItems.splice(selectedItems.indexOf(e.target.value), 1);
 
-        this.setState({ events: selectedEvents });
+        console.log(selectedItems);
+        this.setState({ selectedActivities: selectedItems, isFirstLoadStep2: false });
     }
 
 
@@ -112,26 +151,93 @@ export class PlannerContainer extends Component {
         event.preventDefault();
     };
 
+    handleStepLast = event => {
+        console.log('click -> handleStepLAST.');
+        this.setState({
+            currentStep: 1
+        });
+        event.preventDefault();
+    };
+
+    handleSelectAllCategories = event => {
+        console.log('click -> handleSelectAllCategories.');
+
+        const allcats = dbFake.categories.map((cat) => {
+            return cat.id;
+        });
+        console.log('allcats');
+        console.log(allcats);
+
+        this.setState({
+            selectedCategories: allcats
+        });
+       
+        event.preventDefault();
+    };
+
+    goBack1 = event => {
+        console.log('click -> goBack1.');
+        this.setState({
+            currentStep: 1
+        });
+        event.preventDefault();
+    };
+
+    goBack2 = event => {
+        console.log('click -> goBack2.');
+        this.setState({
+            currentStep: 2
+        });
+        event.preventDefault();
+    };
 
     render() {
-        const { currentStep, planTypes, plans, eventsByPlan } = this.state;
+        console.log('PlannerContainer - render', myDate());
+        const { currentStep, selectedCategories, selectedActivities } = this.state;
 
-         // Paso 1. Seleccionar tipos de planes (categorias).
-         if (currentStep === 1) {
-            return <PlannerStep1 planTypes={planTypes} plans={plans} onChange={this.onPlanChange} handleStep2={this.handleStep2} />;
+        // Paso 1. Seleccionar tipos de planes (Categorias).
+        if (currentStep === 1) {
+            return <PlannerStep1 categories={dbFake.categories} selectedCategories={selectedCategories} onChange={this.onPlanChange} handleStep2={this.handleStep2} handleAll={this.handleSelectAllCategories} />;
         }
 
-        // Paso 2. Seleccionar actividades/ eventos, segun los planes escogidos.        
+        // Paso 2. Seleccionar Actividades (eventos), segun las categorias escogidas. 
         if (currentStep === 2) {
-            return <PlannerStep2 eventsByPlan={eventsByPlan} plans={plans} onChange={this.onEventChange} events={this.state.events} handleStep3={this.handleStep3} />;
+            console.log('PASO 2 -- ');
+            console.log('dbFake.activities');
+            console.log(dbFake.activities);
+            // console.log(selectedCategories);
+            // var listActivitiesByCategories = dbFake.activities.filter(act => act.cat_id === "cat2-musica");
+            var listActivitiesByCategories = dbFake.activities.filter(function(element) {
+                var cat = element.cat_id;
+                 return selectedCategories.indexOf(cat) > -1;
+             });
+
+            console.log('listActivitiesByCategories');
+            console.log(listActivitiesByCategories);
+
+            return <PlannerStep2 isFirstLoadStep2={this.state.isFirstLoadStep2} activities={listActivitiesByCategories}  selectedActivities={selectedActivities} onChange={this.onEventChange} handleStep3={this.handleStep3} goBack={this.goBack1}  />;
         }
 
-        // Paso 3. Mostrar el plan armado y ordenado al usuario, con opcion de guardarlo.
+        // Paso 3. Mostrar el plan armado y ordenado al usuario, con opcion de guardar.
         if (currentStep === 3) {
-            return <PlannerStep3  />;
+            // busca las actividades seleccionadas en la db
+            // let orderedActivitiesList = dbFake.activities[0].items;
+            var finalItems = [];
+            dbFake.activities.forEach((act) => {
+                act.items.forEach(element => {
+                    if (selectedActivities.indexOf(element.id) > -1){
+                        finalItems.push(element);
+                    }
+                });
+            });
+            console.log('finalItems');
+            console.log(finalItems);
+            // ordena las actividades por hora y lugar del evento.
+            finalItems.sort(sortFunction);
+
+            return <PlannerStep3 shapedPlan={finalItems} handleStep={this.handleStepLast} goBack={this.goBack2} />;
         }
 
         return (<div>&nbsp;</div>);
-
     }
 }

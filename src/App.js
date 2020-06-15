@@ -28,9 +28,8 @@ class App extends Component {
 
         return (
             <div>
-
                 <header>
-                    <div class="encabezado">
+                    <div className="encabezado">
                         <nav role="navigation">
                             <div id="menuToggle">
                                 <input type="checkbox"/>
@@ -38,34 +37,34 @@ class App extends Component {
                                     <span></span>
                                     <span></span>
                                 <ul id="menu">
-                                    <img src="images/icons/user_icon.png" />
-                                    <li><a class="amenu" href="/"><p class="userName">Juan Guerra</p></a></li>
-                                    <li><a class="amenu" href="/"><i class="fa fa-fw fa-user"></i>Account</a></li>
-                                    <li><a class="amenu" href="/"><i class="fa fa-fw fa-commenting"></i>Notifications</a></li>
-                                    <li><a class="amenu" href="/"><i class="fa fa-fw fa-list"></i>My plans</a></li>
-                                    <li><a class="amenu" href="/"><i class="fa fa-fw fa-home"></i>Home</a></li>
-                                    <li><a class="amenu" href="/"><i class="fa fa-fw fa-arrow-circle-right"></i>Log out</a></li>
-                                    <li><a class="amenu" href="/"><i class="fa fa-fw fa-question-circle-o"></i>Help</a></li>
+                                    <img src="images/icons/user_icon.png" alt="" />
+                                    <li><a className="amenu" href="/"><p className="userName">Juan Guerra</p></a></li>
+                                    <li><a className="amenu" href="/"><i className="fa fa-fw fa-user"></i>Account</a></li>
+                                    <li><a className="amenu" href="/"><i className="fa fa-fw fa-commenting"></i>Notifications</a></li>
+                                    <li><a className="amenu" href="/"><i className="fa fa-fw fa-list"></i>My plans</a></li>
+                                    <li><a className="amenu" href="/"><i className="fa fa-fw fa-home"></i>Home</a></li>
+                                    <li><a className="amenu" href="/"><i className="fa fa-fw fa-arrow-circle-right"></i>Log out</a></li>
+                                    <li><a className="amenu" href="/"><i className="fa fa-fw fa-question-circle-o"></i>Help</a></li>
                                 </ul>
                             </div>
                         </nav>
-                        <div class="logo">
+                        <div className="logo">
                             <img src="images/TouristsApp-03.png" alt="logo" />
                         </div>
-                        <div class="box-login">
-                            <div class="btn btn-login">
+                        <div className="box-login">
+                            <div className="btn btn-login">
                                 <span>SIGN IN</span>
                             </div>
                         </div>
                     </div>
                 </header>
 
-                <div class="location">
-                    <div class="wrap">
-                        <div class="search">
-                            <input type="text" class="searchTerm" placeholder="What's your location?" />
-                            <button type="submit" class="searchButton">
-                                <i class="fa fa-map-marker"></i>
+                <div className="location">
+                    <div className="wrap">
+                        <div className="search">
+                            <input type="text" className="searchTerm" placeholder="What's your location?" />
+                            <button type="submit" className="searchButton">
+                                <i className="fa fa-map-marker"></i>
                             </button>
                         </div>
                     </div>
@@ -81,8 +80,6 @@ class App extends Component {
 
                 <footer>
 		        </footer>
-
-                
             </div>
         );
     }

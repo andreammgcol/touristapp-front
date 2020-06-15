@@ -4,44 +4,59 @@ import CommonPlannerTop from './CommonPlannerTop';
 import '../styles/categories.css';
 
 
-/*
-function PlannerStep1(props) {
-    // Paso1- seleccionar tipo de plan (CATEGORIAS)
-    return <div>
-        <CommonPlannerTop step={1} />
-        <div className="p-grid p-fluid dashboard">
-            <div className="p-col-12 p-lg-4">
-                <div className="card summary">
-                    <ul className='task-list'>
-
-                        {props.planTypes.map((plan) =>
-                            <li key={plan.id}>
-                                <input type="checkbox" onChange={props.onChange} value={plan.id}  />
-                                <span className="task-name">{plan.label}</span>
-                            </li>
-                        )}
-
-                    </ul>
-                </div>
-            </div>
-            <div className="p-col-12">
-                <input type="button" value="Consultar actividades!" onClick={props.handleStep2} />
-
-            </div>
-            <CommonPlannerFooter />
-        </div>
-    </div>
-}
-*/
-
-
+// new html layout
 function PlannerStep1(props) {
     // Paso1- seleccionar tipo de plan (CATEGORIAS)
     return <div>
 
         <div class="wrapper">
 				<section>
+
 					<div class="row">
+						<input type="button" value="Select all!" onClick={props.handleAll} />
+					</div>
+
+					<div class="row">
+
+
+						{props.categories.map((plan) =>
+
+							<div class="cat" key={plan.id}>
+								<label class="contCheck">
+									<input type="checkbox" onChange={props.onChange} value={plan.id} checked={props.selectedCategories.includes(plan.id)}  />
+									<span class="checkmark"></span>
+								</label>
+								<div class="box">
+								<div class="imgwrap">
+									<img src={plan.icon} alt={plan.label} />
+								</div>
+								</div>
+								<h3>{plan.label}</h3>
+							</div>
+
+                        )}
+
+					</div>
+
+
+					<div id="container">
+						<div class="options" id="button-7">
+                            <input type="button" value="Consultar actividades!" onClick={props.handleStep2} />
+						</div>
+					</div>
+				</section>
+		</div>
+        
+    </div>
+}
+
+
+export default PlannerStep1;
+
+
+// main layout
+/*
+		<div class="row">
 						<div class="cat">
 								<label class="contCheck">
 									<input type="checkbox" onChange={props.onChange} value={1}  />
@@ -127,32 +142,6 @@ function PlannerStep1(props) {
 							<h3>Family</h3> 
 						</div>
 						<div class="cat">
-								<label class="contCheck">
-									<input type="checkbox" onChange={props.onChange} value={8} />
-									<span class="checkmark"></span>
-								</label>
-							<div class="box">
-								<div class="imgwrap">
-									<img src="images/icons/Shopping.png" alt="shopping" />
-								</div>
-							</div>
-							<h3>Shopping</h3> 
-						</div>
-					</div>
-					<div id="container">
-                        
-                        
-
-						<div class="options" id="button-7">
-                            <input type="button" value="Consultar actividades!" onClick={props.handleStep2} />
-						</div>
-
-					</div>
-				</section>
 		</div>
-        
-    </div>
-}
 
-
-export default PlannerStep1;
+*/

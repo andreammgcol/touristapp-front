@@ -7,10 +7,8 @@ import '../styles/map_plan.css';
 function PlannerStep3(props) {
 
     // Paso 3. Muestra el plan del dia ordenado por hora y lugar de los eventos.
-    // var eventsFilteredByPlan = props.eventsByPlan[1].events; // todo> filter events by selected plans (plans).
-    // console.log(eventsFilteredByPlan);
+    // props.shapedPlan.events;
 
-    
     return (
         <div>
             {window.scrollTo(0, 0)}
@@ -36,56 +34,74 @@ function PlannerStep3(props) {
 
     return (
         <div>
+            {window.scrollTo(0, 0)}
+
+            <div class="wrapper">
+                <section>
+                    <div class="row">
+						<input type="button" value="go back" onClick={props.goBack} />
+					</div>
+
+                    {props.shapedPlan.map((plan, index) =>
+
+                        <div class='row' key={plan.id}>
+                            <div class='column'>
+                                <div class={(index%2===0) ? 'border-yes' : 'border-no'} >
+                                {(index%2===0) ? plan.title : '' }
+                                </div>
+                            </div>
+                            <div class='column'>
+                                <div class={(index%2===1) ? 'border-yes' : 'border-no'} >
+                                    {(index%2===1) ? plan.title : '' }
+                                </div>
+                            </div>
+                        </div>
+
+                    )}
+
+                    <div class="row">
+                        <input type="button" value="Guardar plan!" onClick={props.handleStep} />
+                    </div>
+                
+                </section>
+            </div>
+            
+        </div>
+    );
+}
+
+
+// new html layout
+function PlannerStep0(props) {
+
+    return (
+        <div>
 
             <div class="wrapper">
                 <section>
                     <div class='row'>
-                    <div class='column'>
-                        <div class='border-yes'>
-                        Some Text in Column One
+                        <div class='column'>
+                            <div class='border-yes'>
+                            Some Text in Column One
+                            </div>
                         </div>
-                    </div>
-                    <div class='column'>
-                        <div class='border-no'>
-                        
+                        <div class='column'>
+                            <div class='border-no'>
+                            
+                            </div>
                         </div>
-                    </div>
                     </div>
                     
                     <div class='row'>
-                    <div class='column'>
-                        <div class='border-no'>
+                        <div class='column'>
+                            <div class='border-no'>
+                            </div>
                         </div>
-                    </div>
-                    <div class='column'>
-                        <div class='border-yes'>
-                        Some Text in Column Two
+                        <div class='column'>
+                            <div class='border-yes'>
+                            Some Text in Column Two
+                            </div>
                         </div>
-                    </div>
-                    </div>
-                    
-                    <div class='row'>
-                    <div class='column'>
-                        <div class='border-yes'>
-                        Some Text in Column One
-                        </div>
-                    </div>
-                    <div class='column'>
-                        <div class='border-no'>
-                        </div>
-                    </div>
-                    </div>
-                    
-                    <div class='row'>
-                    <div class='column'>
-                        <div class='border-no'>
-                        </div>
-                    </div>
-                    <div class='column'>
-                        <div class='border-yes'>
-                        Some Text in Column Two
-                        </div>
-                    </div>
                     </div>
                     
                     <div class='row'>
@@ -110,6 +126,34 @@ function PlannerStep3(props) {
                             Some Text in Column Two
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class='row'>
+                        <div class='column'>
+                            <div class='border-yes'>
+                            Some Text in Column One
+                            </div>
+                        </div>
+                        <div class='column'>
+                            <div class='border-no'>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class='row'>
+                        <div class='column'>
+                            <div class='border-no'>
+                            </div>
+                        </div>
+                        <div class='column'>
+                            <div class='border-yes'>
+                            Some Text in Column Two
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <input type="button" value="Guardar plan!" onClick={props.handleStep} />
                     </div>
                 
                 </section>
