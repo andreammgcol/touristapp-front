@@ -53,7 +53,7 @@ class App extends Component {
                         </div>
                         <div className="box-login">
                             <div className="btn btn-login">
-                                <span>SIGN IN</span>
+                                <span><i className="fa fa-power-off"></i></span>
                             </div>
                         </div>
                     </div>
