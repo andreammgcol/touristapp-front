@@ -7,7 +7,7 @@
         { "id": "cat5-eco", "label": "Ecotourism", "icon": "images/icons/eco2.png" },
         { "id": "cat6-family", "label": "Family time", "icon": "images/icons/family2.png" },
         { "id": "cat7-night", "label": "Night life", "icon": "images/icons/night_life2.png" },
-        { "id": "cat8-shop", "label": "Shopping", "icon": "images/icons/shop2.png" }
+        { "id": "cat8-shop", "label": "Shopping", "icon": "images/icons/Shopping.png" }
     ],
     "activities": [
         {
