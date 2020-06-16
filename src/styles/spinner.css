@@ -91,14 +91,15 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
     justify-content: center;
-    display: flex;
     margin-top: 20%;
-    margin-bottom: 60%;
+    margin-bottom: 40%;
 }
-.row {
+.rowPlan {
+    display: flex;
+    justify-content: center;
     margin-top: 1%;
+    width: 100%;
 }
 
 .msj {
