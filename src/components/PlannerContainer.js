@@ -4,6 +4,7 @@ import PlannerStep2 from './PlannerStep2';
 import PlannerStep3 from './PlannerStep3';
 import dbFake from '../database/db.json';
 import { myDate, sortFunction } from '../utils';
+import Spinner from './Spinner';
 
 export class PlannerContainer extends Component {
 
@@ -14,6 +15,7 @@ export class PlannerContainer extends Component {
             isLoadedCategory: false,
             isLoadedActivity: false,
             isFirstLoadStep2: true,
+            loadingStep3: true,
             selectedCategories: [], // categorias seleccionadas
             selectedActivities: [], // actividades seleccionadas
             savedPlans: [], // planes guardados por usuario
@@ -26,6 +28,13 @@ export class PlannerContainer extends Component {
         console.log('PlannerContainer - componentDidUpdate', myDate());
         const { currentStep, isLoadedActivity } = this.state;
         console.log('currentStep', currentStep);
+
+        if (currentStep === 3) {
+            const { loadingStep3 } = this.state;
+            if (loadingStep3) {
+                setTimeout(() => { this.setState({ loadingStep3: false }) }, 3000); // simulate loading
+            }
+        }
 
         /* 
         if (currentStep === 2 && !isLoadedActivity) {
@@ -138,7 +147,8 @@ export class PlannerContainer extends Component {
     handleStep2 = event => {
         console.log('click -> handleStep2.');
         this.setState({
-            currentStep: 2
+            currentStep: 2,
+            loadingStep3: true
         });
         event.preventDefault();
     };
@@ -171,7 +181,7 @@ export class PlannerContainer extends Component {
         this.setState({
             selectedCategories: allcats
         });
-       
+
         event.preventDefault();
     };
 
@@ -186,7 +196,8 @@ export class PlannerContainer extends Component {
     goBack2 = event => {
         console.log('click -> goBack2.');
         this.setState({
-            currentStep: 2
+            currentStep: 2, 
+            loadingStep3: true
         });
         event.preventDefault();
     };
@@ -207,15 +218,15 @@ export class PlannerContainer extends Component {
             console.log(dbFake.activities);
             // console.log(selectedCategories);
             // var listActivitiesByCategories = dbFake.activities.filter(act => act.cat_id === "cat2-musica");
-            var listActivitiesByCategories = dbFake.activities.filter(function(element) {
+            var listActivitiesByCategories = dbFake.activities.filter(function (element) {
                 var cat = element.cat_id;
-                 return selectedCategories.indexOf(cat) > -1;
-             });
+                return selectedCategories.indexOf(cat) > -1;
+            });
 
             console.log('listActivitiesByCategories');
             console.log(listActivitiesByCategories);
 
-            return <PlannerStep2 isFirstLoadStep2={this.state.isFirstLoadStep2} activities={listActivitiesByCategories}  selectedActivities={selectedActivities} onChange={this.onEventChange} handleStep3={this.handleStep3} goBack={this.goBack1}  />;
+            return <PlannerStep2 isFirstLoadStep2={this.state.isFirstLoadStep2} activities={listActivitiesByCategories} selectedActivities={selectedActivities} onChange={this.onEventChange} handleStep3={this.handleStep3} goBack={this.goBack1} />;
         }
 
         // Paso 3. Mostrar el plan armado y ordenado al usuario, con opcion de guardar.
@@ -225,7 +236,7 @@ export class PlannerContainer extends Component {
             var finalItems = [];
             dbFake.activities.forEach((act) => {
                 act.items.forEach(element => {
-                    if (selectedActivities.indexOf(element.id) > -1){
+                    if (selectedActivities.indexOf(element.id) > -1) {
                         finalItems.push(element);
                     }
                 });
@@ -235,7 +246,13 @@ export class PlannerContainer extends Component {
             // ordena las actividades por hora y lugar del evento.
             finalItems.sort(sortFunction);
 
-            return <PlannerStep3 shapedPlan={finalItems} handleStep={this.handleStepLast} goBack={this.goBack2} />;
+            const { loadingStep3 } = this.state;
+            if (loadingStep3) {
+                return <Spinner />;
+            } else {
+                return <PlannerStep3 shapedPlan={finalItems} handleStep={this.handleStepLast} goBack={this.goBack2} />;
+            }
+
         }
 
         return (<div>&nbsp;</div>);
