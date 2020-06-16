@@ -55,7 +55,7 @@ function PlannerStep2(props) {
                     
                     <div class="row">
                         <div class="btn-plan">
-                            <input type="button" value="Armar plan!" onClick={props.handleStep3} />
+                            <input type="button" value="Shape plan!" onClick={props.handleStep3} />
                         </div>
                     </div>
                 </section>
