@@ -1,55 +1,54 @@
 import React from 'react'
 import { CommonPlannerFooter } from './CommonPlannerFooter';
 import CommonPlannerTop from './CommonPlannerTop';
-import '../styles/map_plan.css';
+import '../styles/plan.css';
 
-function Message(plan) {
+function DateInfo(plan) {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    // const formated_Date = '2020-06-15T15:00:00';
     const date = new Date(plan.date);
     const month = date.getMonth() + 1;
     const eventDate = (`${date.getDate()}-${months[month-1]}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`);
-    var res = ` ${plan.title} (${eventDate}) Cost: ${plan.cost}`;
+    var res = `(${eventDate})`;
     return res;
 }
 
 function PlannerStep3(props) {
 
     return (
-        <div>
-            {window.scrollTo(0, 0)}
-
+   
             <div class="wrapper">
+                {window.scrollTo(0, 0)}
                 <section>
+
                     <div class="row">
-                        <input type="button" value="go back" onClick={props.goBack} />
+                        <div class="goBack">
+                            <i class="fa fa-fw fa-arrow-circle-left"></i><input type="button" value="go back" onClick={props.goBack} />
+                        </div>
                     </div>
 
+                    <div class="timeline">
                     {props.shapedPlan.map((plan, index) =>
 
-                        <div class='row' key={plan.id}>
-                            <div class='column'>
-                                <div class={(index % 2 === 0) ? 'border-yes' : 'border-no'} >
-                                    {(index % 2 === 0) ? Message(plan) : ''}
-                                </div>
-                            </div>
-                            <div class='column'>
-                                <div class={(index % 2 === 1) ? 'border-yes' : 'border-no'} >
-                                    {(index % 2 === 1) ? Message(plan) : ''}
-                                </div>
+                        <div class={(index % 2 === 0) ? "container left" : "container right"} key={plan.id}>
+                            <div class="content">
+                                <h2>{plan.title}</h2>
+                                <p>{DateInfo(plan)} {plan.cost}</p>
                             </div>
                         </div>
 
                     )}
+                    </div>
 
                     <div class="row">
-                        <input type="button" value="Guardar plan!" onClick={props.handleStep} />
+                        <div class="savePlan">
+                            <input type="button" value="save my plan" onClick={props.handleStep} /><i class="fa fa-save"></i>
+                        </div>
                     </div>
 
                 </section>
             </div>
 
-        </div>
+        
     );
 }
 
