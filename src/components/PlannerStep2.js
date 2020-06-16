@@ -15,12 +15,15 @@ function PlannerStep2(props) {
             <div class="wrapper">
                 <section>
 
-                    <div class="row">
-						<input type="button" value="go back" onClick={props.goBack} />
-					</div>
+                    {/* <div class="row">
+						<i class="fa fa-fw fa-arrow-circle-left"></i><input type="button" value="go back" onClick={props.goBack} />
+					</div> */}
 
                     <div class="row">
                         <div class="NumFound">
+                            <div class="goBack">
+                                <i class="fa fa-fw fa-arrow-circle-left"></i><input type="button" value="go back" onClick={props.goBack}/>
+                            </div>
                             <h1 class="num">18</h1>
                             <h3 class="msj">¡Activities found!</h3>
                         </div>
@@ -51,7 +54,9 @@ function PlannerStep2(props) {
                     )}
                     
                     <div class="row">
-                        <input type="button" value="Armar plan!" onClick={props.handleStep3} />
+                        <div class="btn-plan">
+                            <input type="button" value="Armar plan!" onClick={props.handleStep3} />
+                        </div>
                     </div>
                 </section>
             </div>

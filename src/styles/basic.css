@@ -103,58 +103,30 @@ section {
 	display: inline-flex;
   height: 40px;
   width: 150px;
-  border: 2px solid #FFC909;
+  background-color: #47B5BE;
+  border: 2px solid #47B5BE;
+  border-radius: 8px;
   margin: 20px 20px 20px 20px;
   color: #01627C;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: .8em;
-  letter-spacing: 1.5px;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-a {
-  color: #007BA4;
-  text-decoration: none;
-  letter-spacing: 1px;
+.options > input {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 11pt;
 }
 
-#button-7 {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
+#button-7:hover {
+  background-color: #47B5BE;
+  border: none;
 }
 
-#button-7 a {
-  position: relative;
-  left: 0;
-  transition: all .35s ease-Out;
-}
-
-#dub-arrow {
-  width: 100%;
-  height: 100%;
-  background: #FFC909;
-  left: -200px;
-  position: absolute;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all .35s ease-Out;
-  bottom: 0;
-}
-#button-7 img {
-  width: 20px;
-  height: auto;
-}
-#button-7:hover #dub-arrow {
-  left: 0;
-}
-#button-7:hover a {
-  left: 150px;
+.fa-chevron-circle-right {
+  color: white;
 }
 
 /* checkbox style */
@@ -226,45 +198,50 @@ a {
   width: 100%;
   height: 50px;
   background-color: #FFC909;
+  padding-top: 5px;
 }
 
 .search {
   width: 100%;
   position: absolute;
   display: flex;
-  margin-top: 6px;
+  margin-top: 3px;
+  background: transparent;
+  border: none;
 }
 
 .searchTerm {
-  width: 100%;
-  border: 3px solid #00B4CC;
-  border-right: none;
+  width: 95%;
+  background: transparent;
+  border: none;
   padding: 5px;
   height: auto;
-  border-radius: 5px 0 0 5px;
   outline: none;
-  color: #9DBFAF;
+  color: white;
+  margin-left: 6px;
 }
 
 .searchTerm:focus{
-  color: #00B4CC;
+  color: white;
 }
 
 .searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
+  margin-right: 6px;
   text-align: center;
   color: #fff;
-  border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
+  background: transparent;
+  border: none;
 }
 
 /*Resize the wrap to see the search bar change!*/
 .wrap{
-  width: 30%;
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 15px 15px 15px 15px;
+  width: 300px;
+  height: 32px;
+  margin-top: 19px;
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);

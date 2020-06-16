@@ -13,7 +13,9 @@ function PlannerStep1(props) {
 				<section>
 
 					<div class="row">
-						<input type="button" value="Select all!" onClick={props.handleAll} />
+						<div class="select">
+							<input type="button" value="Select all!" onClick={props.handleAll} />
+						</div>
 					</div>
 
 					<div class="row">
@@ -41,7 +43,7 @@ function PlannerStep1(props) {
 
 					<div id="container">
 						<div class="options" id="button-7">
-                            <input type="button" value="Consultar actividades!" onClick={props.handleStep2} />
+                            <input type="button" value="Check it out" onClick={props.handleStep2} /><i class="fa fa-chevron-circle-right"></i>
 						</div>
 					</div>
 				</section>
