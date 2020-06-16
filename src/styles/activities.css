@@ -128,6 +128,7 @@ input:checked + .slider:before {
 }
 
 .btn-plan > input {
+  margin-bottom: 5px;
   background-color: #007BA4;
   border: 3px solid #007BA4;
   border-radius: 4px;
