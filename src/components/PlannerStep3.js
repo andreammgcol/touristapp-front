@@ -3,32 +3,15 @@ import { CommonPlannerFooter } from './CommonPlannerFooter';
 import CommonPlannerTop from './CommonPlannerTop';
 import '../styles/map_plan.css';
 
-/*
-function PlannerStep3(props) {
-
-    // Paso 3. Muestra el plan del dia ordenado por hora y lugar de los eventos.
-    // props.shapedPlan.events;
-
-    return (
-        <div>
-            {window.scrollTo(0, 0)}
-            <CommonPlannerTop step={3} />
-            <div className="p-grid p-fluid dashboard">
-                <div className="p-col-12 p-lg-4">
-                    PlannerStep3
-                </div>
-
-                <div className="p-col-12">
-                    <input type="button" value="Guardar Plan!" />
-                </div>
-
-                <CommonPlannerFooter />
-
-            </div>
-        </div>
-    );
+function Message(plan) {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    // const formated_Date = '2020-06-15T15:00:00';
+    const date = new Date(plan.date);
+    const month = date.getMonth() + 1;
+    const eventDate = (`${date.getDate()}-${months[month-1]}-${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`);
+    var res = ` ${plan.title} (${eventDate}) Cost: ${plan.cost}`;
+    return res;
 }
-*/
 
 function PlannerStep3(props) {
 
@@ -39,20 +22,20 @@ function PlannerStep3(props) {
             <div class="wrapper">
                 <section>
                     <div class="row">
-						<input type="button" value="go back" onClick={props.goBack} />
-					</div>
+                        <input type="button" value="go back" onClick={props.goBack} />
+                    </div>
 
                     {props.shapedPlan.map((plan, index) =>
 
                         <div class='row' key={plan.id}>
                             <div class='column'>
-                                <div class={(index%2===0) ? 'border-yes' : 'border-no'} >
-                                {(index%2===0) ? plan.title : '' }
+                                <div class={(index % 2 === 0) ? 'border-yes' : 'border-no'} >
+                                    {(index % 2 === 0) ? Message(plan) : ''}
                                 </div>
                             </div>
                             <div class='column'>
-                                <div class={(index%2===1) ? 'border-yes' : 'border-no'} >
-                                    {(index%2===1) ? plan.title : '' }
+                                <div class={(index % 2 === 1) ? 'border-yes' : 'border-no'} >
+                                    {(index % 2 === 1) ? Message(plan) : ''}
                                 </div>
                             </div>
                         </div>
@@ -62,10 +45,10 @@ function PlannerStep3(props) {
                     <div class="row">
                         <input type="button" value="Guardar plan!" onClick={props.handleStep} />
                     </div>
-                
+
                 </section>
             </div>
-            
+
         </div>
     );
 }
@@ -82,16 +65,16 @@ function PlannerStep0(props) {
                     <div class='row'>
                         <div class='column'>
                             <div class='border-yes'>
-                            Some Text in Column One
+                                Some Text in Column One
                             </div>
                         </div>
                         <div class='column'>
                             <div class='border-no'>
-                            
+
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class='row'>
                         <div class='column'>
                             <div class='border-no'>
@@ -99,15 +82,15 @@ function PlannerStep0(props) {
                         </div>
                         <div class='column'>
                             <div class='border-yes'>
-                            Some Text in Column Two
+                                Some Text in Column Two
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class='row'>
                         <div class='column'>
                             <div class='border-yes'>
-                            Some Text in Column One
+                                Some Text in Column One
                             </div>
                         </div>
                         <div class='column'>
@@ -115,7 +98,7 @@ function PlannerStep0(props) {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class='row'>
                         <div class='column'>
                             <div class='border-no'>
@@ -123,15 +106,15 @@ function PlannerStep0(props) {
                         </div>
                         <div class='column'>
                             <div class='border-yes'>
-                            Some Text in Column Two
+                                Some Text in Column Two
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class='row'>
                         <div class='column'>
                             <div class='border-yes'>
-                            Some Text in Column One
+                                Some Text in Column One
                             </div>
                         </div>
                         <div class='column'>
@@ -139,7 +122,7 @@ function PlannerStep0(props) {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class='row'>
                         <div class='column'>
                             <div class='border-no'>
@@ -147,7 +130,7 @@ function PlannerStep0(props) {
                         </div>
                         <div class='column'>
                             <div class='border-yes'>
-                            Some Text in Column Two
+                                Some Text in Column Two
                             </div>
                         </div>
                     </div>
@@ -155,10 +138,10 @@ function PlannerStep0(props) {
                     <div class="row">
                         <input type="button" value="Guardar plan!" onClick={props.handleStep} />
                     </div>
-                
+
                 </section>
             </div>
-            
+
         </div>
     );
 }
