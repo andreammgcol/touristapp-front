@@ -54,7 +54,7 @@ function PlannerStep3(props) {
 
 
 // new html layout
-function PlannerStep0(props) {
+/* function PlannerStep0(props) {
 
     return (
         <div>
@@ -143,7 +143,7 @@ function PlannerStep0(props) {
 
         </div>
     );
-}
+} */
 
 export default PlannerStep3;
 

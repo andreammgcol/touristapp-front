@@ -8,6 +8,9 @@ import { AppProfile } from './components/AppProfile';
 import Home from './components/Home';
 import { Main } from './components/Main';
 import { PlannerContainer } from './components/PlannerContainer';
+import { Modal } from './components/Modal';
+import { LoginUsers } from './components/LoginUsers';
+import { UserPlans } from './components/UserPlans';
 import './styles/menubar.css';
 import './styles/basic.css';
 
@@ -75,7 +78,10 @@ class App extends Component {
                     <Route path="/" exact component={PlannerContainer} />
                     <Route path="/home" component={Home} />
                     <Route path="/main" component={Main} />
-                    <Route path="/planner" component={PlannerContainer} />
+                    <Route path="/planner" component={PlannerContainer} /> 
+                    <Route path="/modal" component={Modal} />
+                    <Route path="/login" component={LoginUsers} />
+                    <Route path="/myplans" component={UserPlans} />
                 </div>
 
                 <footer>

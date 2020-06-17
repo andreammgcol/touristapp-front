@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router'
 import PlannerStep1 from './PlannerStep1';
 import PlannerStep2 from './PlannerStep2';
 import PlannerStep3 from './PlannerStep3';
@@ -16,6 +17,7 @@ export class PlannerContainer extends Component {
             isLoadedActivity: false,
             isFirstLoadStep2: true,
             loadingStep3: true,
+            redirectLogin: false,
             selectedCategories: [], // categorias seleccionadas
             selectedActivities: [], // actividades seleccionadas
             savedPlans: [], // planes guardados por usuario
@@ -164,7 +166,7 @@ export class PlannerContainer extends Component {
     handleStepLast = event => {
         console.log('click -> handleStepLAST.');
         this.setState({
-            currentStep: 1
+            redirectLogin: true
         });
         event.preventDefault();
     };
@@ -204,6 +206,9 @@ export class PlannerContainer extends Component {
 
     render() {
         console.log('PlannerContainer - render', myDate());
+        if (this.state.redirectLogin) {
+            return <Redirect to='/login' />
+        }
         const { currentStep, selectedCategories, selectedActivities } = this.state;
 
         // Paso 1. Seleccionar tipos de planes (Categorias).
