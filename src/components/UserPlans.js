@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
+import { AppTopbar } from './AppTopbar';
+import { AppFooter } from './AppFooter';
+import { AppLocation } from './AppLocation';
+import '../styles/menubar.css';
+import '../styles/basic.css';
 import '../styles/myplans.css';
-
 
 export class UserPlans extends Component {
 
@@ -25,8 +29,11 @@ export class UserPlans extends Component {
             return <Redirect to='/planner' />
         }
         return (
+            <div>
+                <AppTopbar />
+                <AppLocation />
 
-            <div class="wrapper">
+                    <div class="wrapper">
             <section>
                 <h3>Explore my plans</h3>
                 <table>
@@ -79,8 +86,8 @@ export class UserPlans extends Component {
             </section>
             </div>
             
-
-
+                <AppFooter />
+            </div>
         );
     }
 }
