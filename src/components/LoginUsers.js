@@ -26,7 +26,7 @@ export class LoginUsers extends Component {
         }
         return (
             <div>
-
+                {window.scrollTo(0, 0)}
                 <div class="row_logo">
                     <img src="images/TouristsApp-03.png" />
                 </div>
