@@ -81,8 +81,28 @@ export class UserPlans extends Component {
                         <th class="th5"><i class="fa fa-close"></i></th>
                     </tr>
                     
+                    
                     </tbody>
                 </table>
+            
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+            
             </section>
             </div>
             

@@ -151,12 +151,12 @@ a{color:inherit;text-decoration:none}
 	text-align:center;
 }
 
-.row_logo {
+.login_row_logo {
   display: block;
   width: 100%;
 	background: #007BA4;
 }
-.row_logo > img {
+.login_row_logo > img {
   display: block;
   width: 50%;
   margin-left: 25%;

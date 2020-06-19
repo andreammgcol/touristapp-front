@@ -9,7 +9,7 @@ const Spinner = () => {
         <div className="rowPlan">
             <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div>
-        <div className="rowPlan"> </div>
+        <div className="rowPadding"></div>
     </div>
   );
 };

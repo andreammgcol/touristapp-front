@@ -92,8 +92,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 5%;
-    margin-bottom: 40%;
+    margin-top: 15%;
 }
 .rowPlan {
     display: flex;
@@ -106,4 +105,7 @@
     text-align: center;
     color: #007BA4;
     margin-top: 0%;
+}
+.rowPadding{
+  padding-bottom: 50%;
 }
