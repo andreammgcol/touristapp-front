@@ -230,8 +230,16 @@ export class PlannerContainer extends Component {
 
             console.log('listActivitiesByCategories');
             console.log(listActivitiesByCategories);
+            var total = 0;
+            var length = listActivitiesByCategories.length;
+            for (var i = 0; i < length; i++) {
+                var aItems = listActivitiesByCategories[i].items;
+                total += aItems.length;
+            }
+            console.log(total);
+            
 
-            return <PlannerStep2 isFirstLoadStep2={this.state.isFirstLoadStep2} activities={listActivitiesByCategories} selectedActivities={selectedActivities} onChange={this.onEventChange} handleStep3={this.handleStep3} goBack={this.goBack1} />;
+            return <PlannerStep2 total={total} isFirstLoadStep2={this.state.isFirstLoadStep2} activities={listActivitiesByCategories} selectedActivities={selectedActivities} onChange={this.onEventChange} handleStep3={this.handleStep3} goBack={this.goBack1} />;
         }
 
         // Paso 3. Mostrar el plan armado y ordenado al usuario, con opcion de guardar.

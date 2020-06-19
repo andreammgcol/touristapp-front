@@ -24,7 +24,7 @@ function PlannerStep2(props) {
                             <div class="goBack">
                                 <i class="fa fa-fw fa-arrow-circle-left"></i><input type="button" value="go back" onClick={props.goBack}/>
                             </div>
-                            <h1 class="num">18</h1>
+                            <h1 class="num">{props.total}</h1>
                             <h3 class="msj">¡Activities found!</h3>
                         </div>
                     </div>
