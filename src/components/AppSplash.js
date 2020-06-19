@@ -22,7 +22,7 @@ export class AppSplash extends Component {
 
   componentDidUpdate() {
     if (!this.state.redirect) {
-      setTimeout(() => { this.setState({ redirect: true }) }, 5000); // simulate loading
+      setTimeout(() => { this.setState({ redirect: true }) }, 3000); // simulate loading
     }
   }
 
@@ -44,9 +44,6 @@ export class AppSplash extends Component {
         
         <div class="row_logo">
           <img src="images/TouristsApp-03.png" />
-        </div>
-        <div class="row_txt">
-          Loading experience...
         </div>
       </div>
 
