@@ -15,6 +15,12 @@ By using this app you will receive recommendations of the best places, local eve
 
 - Heroku
 
+## Links
+
+- App: https://touristapp-preview.herokuapp.com/
+- Landingpage: https://touristapp-landingpage.herokuapp.com/
+- Blog Linkedin: https://www.linkedin.com/pulse/your-friend-city-have-best-time-andrea-m%25C3%25A9ndez-mesias
+
 ## Author
 
 Andrea Méndez Mesias - Github user: andreammgcol
